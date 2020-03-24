@@ -22,7 +22,7 @@ import butterknife.ButterKnife;
 
 public class MainActivity extends AppCompatActivity {
     private List<Band> list;
-
+    //привязка листа из ЮИ
     @BindView(R.id.listview)
     ListView lv;
 
@@ -31,7 +31,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
-
+        //создание данных, для листа
         List<Band> bands = new ArrayList<>();
         bands.add(new Band("Ночные Снайпера", "1993/8/19", "Рок", "Long", R.drawable.ns));
         bands.add(new Band("Кино", "1981", "Рок", "Long", R.drawable.kinof));
@@ -40,9 +40,10 @@ public class MainActivity extends AppCompatActivity {
         bands.add(new Band("Канцлер Ги", "2002", "менестрельская песня", "Long", R.drawable.kg));
         bands.add(new Band("АнимациЯ", "2000", "Рок", "Long", R.drawable.an));
         bands.add(new Band("Любэ", "1989/1/14", "Фолк", "Long", R.drawable.lb));
-
+        //Подключение адаптера
         myAdapter adapter = new myAdapter(bands, this);
         lv.setAdapter(adapter);
+        //Навесил слушателя для обработки нажатий
         lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -58,7 +59,7 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-
+    //Класс адаптера
     class myAdapter extends BaseAdapter{
         private List<Band> list;
         private LayoutInflater inflater;
@@ -85,6 +86,7 @@ public class MainActivity extends AppCompatActivity {
         }
 
         @Override
+        //Тут происходит привязка данных к элементам интерфейса
         public View getView(int position, View convertView, ViewGroup parent) {
             View view = inflater.inflate(R.layout.card_view, parent, false);
 

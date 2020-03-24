@@ -10,6 +10,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class InfoPageActivity extends AppCompatActivity {
+    //Привязка элементов ЮИ
     @BindView(R.id.infoDate)
     TextView date;
     @BindView(R.id.infoName)
@@ -26,6 +27,7 @@ public class InfoPageActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_info_page);
         ButterKnife.bind(this);
+        //Назначение и отображение данных
         name.setText(getIntent().getStringExtra("name"));
         ganre.setText("Жанр: " + getIntent().getStringExtra("ganre"));
         date.setText("Создание группы: " + getIntent().getStringExtra("date"));
